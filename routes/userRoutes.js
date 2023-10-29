@@ -36,7 +36,7 @@ router.get('/info-user', [authetication], userInfo)
 
 router.get('/admin', [
     authetication,
-    // isAdmin
+    isAdmin
 ], adminProfile)
 
 

@@ -29,9 +29,7 @@ const Collection = db.define('collections', {
         }
     },
 
-    imagenUrl: {
-        type: DataTypes.STRING
-    }
+    
 }, {
     timestamps: false
 })

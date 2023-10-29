@@ -1,5 +1,6 @@
 import express from 'express'
 import cors from 'cors'
+import fileUpload from 'express-fileupload'
 
 import db from '../db/connectDB.js'
 import User from '../routes/userRoutes.js'
@@ -9,6 +10,7 @@ import Collection from '../routes/collectionsRoutes.js'
 import ShippingInfo from '../routes/shippingInfoRoutes.js'
 import Orders from '../routes/orderRoutes.js'
 import Payment from '../routes/paymentsRoutes.js'
+import ImageProduct from '../routes/uploadRoute.js'
 
 class Server {
 
@@ -23,7 +25,8 @@ class Server {
             collections: '/api/v1/collections',
             shippingInfo: '/api/v1/shipping-info',
             orders: '/api/v1/orders',
-            payments: '/api/v1/payments'
+            payments: '/api/v1/payments',
+            uploads: '/api/v1/uploads'
         }
 
         this.whitelist = [process.env.FRONTEND_URL]
@@ -60,11 +63,11 @@ class Server {
 
 
 
-        // this.app.use(fileUpload({
-        //     useTempFiles : true,
-        //     tempFileDir : '/tmp/',
-        //     createParentPath: true //Automatically creates the directory path specified in .mv(filePathName)
-        // }));
+        this.app.use(fileUpload({
+            useTempFiles : true,
+            tempFileDir : '/tmp/',
+            createParentPath: true //Automatically creates the directory path specified in .mv(filePathName)
+        }));
     }
 
     routes() {
@@ -75,6 +78,7 @@ class Server {
         this.app.use(this.path.shippingInfo, ShippingInfo)
         this.app.use(this.path.orders, Orders)
         this.app.use(this.path.payments, Payment)
+        this.app.use(this.path.uploads, ImageProduct)
     }
 
     listen() {

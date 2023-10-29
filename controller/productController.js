@@ -4,6 +4,9 @@ import Product from "../models/productModel.js"
 import ProductFeatures from "../models/featureModel.js"
 import Collection from "../models/collectionModel.js"
 
+import { v2 as cloudinary } from 'cloudinary'
+cloudinary.config(process.env.CLOUDINARY_URL)
+
 const getProduct = async (req = request, res = response) => {
     const {id} = req.params
 
@@ -32,7 +35,7 @@ const getAllProducts = async (req = request, res = response) => {
 
 const createProduct = async (req = request, res = response) => {
 
-    const { title, description, price, color, stock, discount, collectionId } = req.body
+    const { title, description, price, color, stock, discount, image, collectionId } = req.body
 
     const productExist = await Product.findOne({where: { [Op.and]: [ {title: title}, {color: color} ] } })
     
@@ -53,9 +56,12 @@ const createProduct = async (req = request, res = response) => {
       }
 
     try {
-        const product = await Product.create({
+        
+
+        const product = Product.build({
             title: title,
             description: description,
+            image: image ?? null,
             price: price,
             color: color,
             stock: stock,
@@ -63,6 +69,7 @@ const createProduct = async (req = request, res = response) => {
             collectionId: collectionId ?? null
         })
         
+        await product.save()
         res.status(200).json({msg: 'Product Created', product})
     } catch (error) {
         const err = new Error('Failed to create product')

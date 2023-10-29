@@ -27,6 +27,11 @@ const Product = db.define('products', {
             notEmpty: true
         }
     },
+
+    image: {
+        type: DataTypes.STRING,
+    },
+
     price: {
         type: DataTypes.DECIMAL,
         allowNull: false,
@@ -36,9 +41,7 @@ const Product = db.define('products', {
         }
         
     },
-    imageUrl: {
-        type: DataTypes.STRING,
-    },
+    
 
     color: {
         type: DataTypes.STRING,
