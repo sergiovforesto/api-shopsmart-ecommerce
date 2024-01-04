@@ -5,8 +5,7 @@ import User from "../models/userModel.js";
 
 const createShippingInfo = async(req = request, res = response) => {
     const {country, city, state, address, phone, zipCode} = req.body
-    //TODO= Revisar con el front para ver si locambias por, creas otra consulta por buscando el User por el id
-
+    
     const {user} = req
 
     const userHasInfo = await ShippingInfo.findOne({where: {userId: user.userId}})
@@ -29,7 +28,7 @@ const createShippingInfo = async(req = request, res = response) => {
     
         await createShippingInfo.save()
     
-        res.status(201).json({msg: 'Added Successfully', createShippingInfo})
+        res.status(201).json({msg: 'Added Successfully', info: createShippingInfo})
 
     } catch (error) {
         const err = new Error('Error to create shipping information')
@@ -52,7 +51,6 @@ const getAllShippingInfo = async(req = request, res = response) => {
 }
 
 const getShippingInfo = async(req = request, res = response) => {
-    //TODO= Revisar con el front para ver si locambias por params /:id
     const {user} = req
     const userHasInfo = await ShippingInfo.findOne({where: {userId: user.userId}})
 
@@ -68,7 +66,6 @@ const getShippingInfo = async(req = request, res = response) => {
 
 const updateShippingInfo = async(req = request, res = response) => {
     const {country, city, state, address, phone, zipCode} = req.body
-    //TODO=Revisar si tienes que cambiar esto tambien por params /:id en la rutas
     const {user} = req
 
     const shippingInfo = await ShippingInfo.findOne({where: {userId: user.userId} })
@@ -101,10 +98,9 @@ const updateShippingInfo = async(req = request, res = response) => {
 }
 
 const deleteShippingInfo = async(req = request, res = response) => {
-    //TODO=Revisar si tienes que cambiar esto tambien por params /:id en la rutas
     const {user} = req
 
-    const existInfo = await ShippingInfo.findByPk(user.userId)
+    const existInfo = await ShippingInfo.findOne({where: {userId: user.userId} })
 
     if(!existInfo) {
         const err  = new Error(`This ID:${id} does not exist`)
@@ -114,6 +110,7 @@ const deleteShippingInfo = async(req = request, res = response) => {
     await ShippingInfo.destroy({where: {userId: user.userId}})
 
     res.status(200).json({msg: 'Deleted successfully'})
+
 }
 
 export {

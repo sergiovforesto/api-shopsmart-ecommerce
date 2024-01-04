@@ -14,7 +14,7 @@ const Product = db.define('products', {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
-            len: [2, 40],
+            len: [2, 80],
             notEmpty: true
         }
         
@@ -28,18 +28,13 @@ const Product = db.define('products', {
         }
     },
 
-    image: {
+    imageUrl: {
         type: DataTypes.STRING,
     },
 
     price: {
-        type: DataTypes.DECIMAL,
+        type: DataTypes.STRING,
         allowNull: false,
-        defaultValue: 0,
-        validate: {
-            isDecimal: true
-        }
-        
     },
     
 
@@ -81,7 +76,7 @@ const Product = db.define('products', {
 
     rating: {
         type: DataTypes.INTEGER,
-        defaultValue: 0,
+        defaultValue: 1,
         validate: {
             isInt: true,
             max: 5

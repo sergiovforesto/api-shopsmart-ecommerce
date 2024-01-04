@@ -9,17 +9,76 @@ const ProductFeatures = db.define('product_features', {
         primaryKey: true
     },
 
-    name: {
+    first: {
         type: DataTypes.STRING,
         validate: {
-            len: [1, 30]
+            len: [1, 60]
         }
     },
 
-    value: {
+    firstValue: {
         type: DataTypes.STRING,
         validate: {
-            len: [1, 30]
+            len: [1, 60]
+        }
+    },
+
+    second: {
+        type: DataTypes.STRING,
+        validate: {
+            len: [1, 60]
+        }
+    },
+
+    secondValue: {
+        type: DataTypes.STRING,
+        validate: {
+            len: [1, 60]
+        }
+    },
+
+
+    third: {
+        type: DataTypes.STRING,
+        validate: {
+            len: [1, 60]
+        }
+    },
+
+    thirdValue: {
+        type: DataTypes.STRING,
+        validate: {
+            len: [1, 60]
+        }
+    },
+
+
+    fourth: {
+        type: DataTypes.STRING,
+        validate: {
+            len: [1, 60]
+        }
+    },
+
+    fourthValue: {
+        type: DataTypes.STRING,
+        validate: {
+            len: [1, 60]
+        }
+    },
+
+
+    fifth: {
+        type: DataTypes.STRING,
+        validate: {
+            len: [1, 60]
+        }
+    },
+
+    fifthValue: {
+        type: DataTypes.STRING,
+        validate: {
+            len: [1, 60]
         }
     },
 

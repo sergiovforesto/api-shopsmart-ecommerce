@@ -2,8 +2,17 @@ import { request, response } from "express";
 import ProductFeatures from "../models/featureModel.js";
 import Product from "../models/productModel.js";
 
+
+
 const createFeature = async (req = request, res = response) => {
-    const {name, value} = req.body
+    const {
+        first, firstValue,
+        second, secondValue,
+        third, thirdValue,
+        fourth, fourthValue,
+        fifth, fifthValue,
+
+    } = req.body
     const {id} = req.params
 
     const product = await Product.findOne({where: {id: id}})
@@ -28,8 +37,11 @@ const createFeature = async (req = request, res = response) => {
     const [feature, created] = await ProductFeatures.findOrCreate({
         where: {
           productId: product.id,
-          name: name,
-          value: value,
+          first: first, firstValue: firstValue,
+          second: second, secondValue: secondValue,
+          third: third, thirdValue: thirdValue,
+          fourth: fourth, fourthValue: fourthValue,
+          fifth: fifth, fifthValue: fifthValue,
         },
     })
       
@@ -44,7 +56,13 @@ const createFeature = async (req = request, res = response) => {
 const updateFeature = async (req = request, res = response) => {
 
     const {id} = req.params
-    const {name, value} = req.body
+    const {
+        first, firstValue,
+        second, secondValue,
+        third, thirdValue,
+        fourth, fourthValue,
+        fifth, fifthValue,
+    } = req.body
 
     const feature = await ProductFeatures.findByPk(id)
 
@@ -57,8 +75,16 @@ const updateFeature = async (req = request, res = response) => {
 
     try {
 
-        feature.name = name || updateFeature.name;
-        feature.value = value || updateFeature.value;
+        feature.first = first || updateFeature.first;
+        feature.firstValue = firstValue || updateFeature.firstValue;
+        feature.second = second || updateFeature.second;
+        feature.secondValue = secondValue || updateFeature.secondValue;
+        feature.third = third || updateFeature.third;
+        feature.thirdValue = thirdValue || updateFeature.thirdValue;
+        feature.fourth = fourth || updateFeature.fourth;
+        feature.fourthValue = fourthValue || updateFeature.fourthValue;
+        feature.fifth = fifth || updateFeature.fifth;
+        feature.fifthValue = fifthValue || updateFeature.fifthValue;
         
     
         await feature.save();
@@ -89,5 +115,5 @@ const deleteFeature = async (req = request, res = response) => {
 export {
     createFeature,
     updateFeature,
-    deleteFeature
+    deleteFeature,
 }

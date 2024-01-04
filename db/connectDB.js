@@ -1,6 +1,6 @@
 import {Sequelize} from 'sequelize'
 
-const db = new Sequelize('shopsmartdb', 'root', 'sangabriel56-', {
+const db = new Sequelize('shopsmartdb', 'root', process.env.ROOT_PASSWORD, {
     host: 'localhost',
     dialect: 'mysql'
 });

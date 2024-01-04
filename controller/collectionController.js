@@ -12,7 +12,7 @@ const createCollection = async (req = request, res = response) => {
         return res.status(400).json({msg: error.message})
     }
 
-    //TODO faltaria subir la imagen con cloudinary
+    
 
     try {
         //luego lo cambiamos a build
@@ -30,8 +30,16 @@ const createCollection = async (req = request, res = response) => {
 
 
 const getCollections = async (req = request, res = response) => {
-    const collections = await Collection.findAll({include: Product})
 
+    const page = Number(req.query.page) || 1;
+    const limit = Number(req.query.limit) || 11;
+    const collections = await Collection.findAll({
+        include: Product,
+        offset: (page - 1) * limit,
+        limit: limit
+    })
+
+    const collectionNumber = await Collection.count()
 
     if(collections.length === 0) {
         const error  = new Error('Not collections')
@@ -42,13 +50,14 @@ const getCollections = async (req = request, res = response) => {
         const quantityProducts = collection.products.length;
       
         return {
+          id: collection.id,
           title: collection.title,
           quantityProducts,
         };
     });
 
 
-    res.status(200).json({quantityCollections: collections.length, productsByCollection})
+    res.status(200).json({quantityCollections: collectionNumber, productsByCollection})
 }
 
 const getCollection = async(req = request, res = response) => {

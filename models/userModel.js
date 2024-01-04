@@ -17,6 +17,10 @@ const User = db.define('users', {
             max: 20,
             min: 3,
             notEmpty: true
+        },
+        get() {
+            const minus = this.getDataValue('name')
+            return minus ? minus.toLowerCase() : null
         }
         
     },
@@ -28,6 +32,10 @@ const User = db.define('users', {
             min: 3,
             notEmpty: true
 
+        },
+        get() {
+            const minus = this.getDataValue('lastName')
+            return minus ? minus.toLowerCase() : null
         }
     },
     email: {
@@ -39,6 +47,10 @@ const User = db.define('users', {
                 msg: 'Email invalid'
             },
             notEmpty: true
+        },
+        set(value) {
+            const minus = this.setDataValue('email', value)
+            return minus ? minus.toLowerCase() : minus
         }
         
     },

@@ -5,24 +5,22 @@ import User from "./userModel.js";
 const Order = db.define('orders', {
     id: {
         type: DataTypes.INTEGER,
-        autoIncrement:true,
+        autoIncrement: true,
         primaryKey: true
     },
 
-    numberOrder: {
-        type: DataTypes.CHAR(36),
-        defaultValue: DataTypes.UUIDV4
-        // allowNull: false
+    orderNumber: {
+        type: DataTypes.STRING,
+        allowNull: false
     },
 
-    shippingDate: {
-        type: DataTypes.DATE,
+    dateOrder: {
+        type: DataTypes.STRING,
         allowNull: false,
     },
 
     dateDelivery: {
-        type: DataTypes.DATE,
-        allowNull: false,
+        type: DataTypes.STRING,
     },
 
     products: {
@@ -32,15 +30,8 @@ const Order = db.define('orders', {
 
     status: {
         type: DataTypes.ENUM,
-        allowNull: false,
         defaultValue: 'pending',
         values: ['pending', 'shipped', 'delivered', 'cancelled'],
-
-    },
-
-    active: {
-        type: DataTypes.BOOLEAN,
-        defaultValue: true
     },
 
     subTotal: {
@@ -55,8 +46,6 @@ const Order = db.define('orders', {
 
 
 
-}, {
-    timestamps: false
 })
 
 

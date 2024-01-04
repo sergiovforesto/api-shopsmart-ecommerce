@@ -1,37 +1,36 @@
 import express from "express"
 const router = express.Router()
 
-import { getProduct, getAllProducts, createProduct, addCollectionToProduct, updateProduct, deleteProduct} from "../controller/productController.js"
-import { authetication } from "../middlewares/authetication.js"
+import { getProduct, getAllProductStatic, createProduct, addCollectionToProduct, updateProduct, deleteProduct} from "../controller/productController.js"
 import { isEmptyFields } from "../middlewares/validateFields.js"
-// import { isAdmin } from "../middlewares/isAdmin.js"
+import { isAdmin } from "../middlewares/isAdmin.js"
+import { authetication } from "../middlewares/authetication.js"
 
 //public
-router.route('/').get(getAllProducts)
+router.route('/').get(getAllProductStatic)
 
-router.route('/:id').get([
-    authetication,
-],getProduct)
+router.route('/:id').get(getProduct)
+
 router.route('/').post([
     isEmptyFields,
     authetication,
-    // isAdmin
+    isAdmin
 ],createProduct)
 
 router.route('/add-collection/:id').put([
     isEmptyFields,
     authetication,
-    // isAdmin
+    isAdmin
 ],addCollectionToProduct)
 
 router.route('/:id').put([
     authetication,
-    // isAdmin
+    isAdmin
 ],updateProduct)
 
 router.route('/:id').delete([
     authetication,
-    // isAdmin
+    isAdmin
 ],deleteProduct)
 
 

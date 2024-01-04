@@ -4,23 +4,28 @@ const router = express.Router()
 import { createCollection, getCollections, getCollection, updateCollection, deleteCollection } from "../controller/collectionController.js"
 import { authetication } from "../middlewares/authetication.js"
 import { isEmptyFields } from "../middlewares/validateFields.js"
+import { isAdmin } from "../middlewares/isAdmin.js"
 
 router.route('/').get([
-    authetication
+    authetication,
+    isAdmin
 ], getCollections)
 
 router.route('/:id').get([
-    authetication
+    authetication,
+    isAdmin
 ], getCollection)
 
 router.route('/').post([
     isEmptyFields,
-    authetication
+    authetication,
+    isAdmin
 ], createCollection)
 
 router.route('/:id').put([
     isEmptyFields,
-    authetication
+    authetication,
+    isAdmin
 ], updateCollection)
 
 router.route('/:id').delete([

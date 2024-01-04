@@ -4,13 +4,12 @@ import Product from "../models/productModel.js"
 import ProductFeatures from "../models/featureModel.js"
 import Collection from "../models/collectionModel.js"
 
-import { v2 as cloudinary } from 'cloudinary'
-cloudinary.config(process.env.CLOUDINARY_URL)
+
 
 const getProduct = async (req = request, res = response) => {
     const {id} = req.params
 
-    const productId = await Product.findByPk(id)
+    const productId = await Product.findByPk(id, {include: ProductFeatures})
 
     if(!productId) {
         const error = new Error('Product dont exist')
@@ -21,21 +20,39 @@ const getProduct = async (req = request, res = response) => {
     
 } 
 
-const getAllProducts = async (req = request, res = response) => {
-    const products = await Product.findAll({include: ProductFeatures})
+const getAllProductStatic = async (req = request, res = response) => {
+    const page = Number(req.query.page) || 1;
+    const limit = Number(req.query.limit) || 12;
+
+    const products = await Product.findAll({
+        include: ProductFeatures, 
+        offset: (page - 1) * limit,
+        limit: limit,
+        
+    })
+
+    const productNumber = await Product.count()
     
     if(products.length === 0) {
         const error  = new Error('Not products')
         return res.status(400).json({msg: error.message})
     }
 
-    res.status(200).json({quantityProducts: products.length, products})
+    res.status(200).json({quantityProducts: productNumber, products})
     
 }
 
+
+
+
+
 const createProduct = async (req = request, res = response) => {
 
-    const { title, description, price, color, stock, discount, image, collectionId } = req.body
+    const { 
+        title, description, price, color, 
+        stock, status, rating, freeShipping, discount, imageUrl, 
+        collectionId 
+    } = req.body
 
     const productExist = await Product.findOne({where: { [Op.and]: [ {title: title}, {color: color} ] } })
     
@@ -61,10 +78,13 @@ const createProduct = async (req = request, res = response) => {
         const product = Product.build({
             title: title,
             description: description,
-            image: image ?? null,
+            imageUrl: imageUrl ?? null,
             price: price,
             color: color,
             stock: stock,
+            status: status,
+            rating: rating,
+            freeShipping: freeShipping,
             discount: discount,
             collectionId: collectionId ?? null
         })
@@ -114,9 +134,13 @@ const updateProduct = async(req = request, res = response) => {
     const {
         title,
         description,
+        imageUrl,
         price,
+        freeShipping,
+        status,
         color,
         stock,
+        rating,
         discount,
         collectionId
     } = req.body
@@ -135,9 +159,13 @@ const updateProduct = async(req = request, res = response) => {
 
         product.title = title || updateProduct.title;
         product.description = description || updateProduct.description;
+        product.imageUrl = imageUrl || updateProduct.imageUrl;
         product.price = price || updateProduct.price;
         product.color = color || updateProduct.color;
         product.stock = stock || updateProduct.stock;
+        product.rating = rating || updateProduct.rating;
+        product.freeShipping = freeShipping || updateProduct.freeShipping;
+        product.status = status || updateProduct.status;
         product.discount = discount || updateProduct.discount;
         product.collectionId = collectionId || updateProduct.collectionId;
     
@@ -163,6 +191,7 @@ const deleteProduct = async(req = request, res = response) => {
     }
     
     await Product.destroy({where: {id: id}})
+    await ProductFeatures.destroy({where: {productId: id}})
 
     res.status(200).json({msg: 'Deleted successfully'})
 }
@@ -172,7 +201,7 @@ const deleteProduct = async(req = request, res = response) => {
 
 export {
     getProduct,
-    getAllProducts,
+    getAllProductStatic,
     createProduct,
     addCollectionToProduct,
     updateProduct,

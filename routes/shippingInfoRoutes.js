@@ -4,11 +4,11 @@ const router = express.Router()
 import { createShippingInfo, getShippingInfo, getAllShippingInfo, updateShippingInfo, deleteShippingInfo } from "../controller/shippingInfoController.js"
 import { authetication } from "../middlewares/authetication.js"
 import { isEmptyFields } from "../middlewares/validateFields.js"
-// import { isAdmin } from "../middlewares/isAdmin.js"
+import { isAdmin } from "../middlewares/isAdmin.js"
 
 router.route('/').get([
     authetication,
-    // isAdmin
+    isAdmin
 ], getAllShippingInfo)
 
 router.route('/information').get([
@@ -26,7 +26,7 @@ router.route('/').put([
 ], updateShippingInfo)
 
 router.route('/').delete([
-    authetication
+    authetication,
 ], deleteShippingInfo)
 
 export default router

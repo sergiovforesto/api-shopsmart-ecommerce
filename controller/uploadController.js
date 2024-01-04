@@ -1,16 +1,19 @@
 import { response, request } from "express"
-// import ImageUrl from "../models/ImageModel.js"
+import { fileURLToPath } from 'url'
+import path from 'path'
+import fs from 'fs'
 import uploadFile from "../helper/uploadFile.js"
 
-import { v2 as cloudinary } from 'cloudinary'
-cloudinary.config(process.env.CLOUDINARY_URL)
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
+
 
 
 //local
 const uploadImage = async (req = request, res = response) => {
-
+    
     try {
-
+        
         const pathFile = await uploadFile(req.files)
         //crea la carpeta imgs auto, porque en server tienes la ultima opcion en true
         // const pathFile = await uploadFile(req.files, undefined, 'imgs')
@@ -21,33 +24,55 @@ const uploadImage = async (req = request, res = response) => {
     } catch (error) {
         res.status(500).json({error})
     }
-
+    
     
 }
 
-const uploadImageCloundinary = async(req = request, res = response) => {
+
+
+const getImage = async (req = request, res = response) => {
+    const {id} = req.params
 
     try {
-
-        const {tempFilePath} = req.files.img
-        const imgClod = await cloudinary.uploader.upload(tempFilePath, {folder: 'products'})
         
-        const {secure_url} = imgClod
+        const imagePath = path.join(__dirname, '../uploads', id)
     
-        res.status(200).json({link: secure_url})
+        if(fs.existsSync(imagePath)) {
+            return res.sendFile(imagePath)
+        }
+
+
     } catch (error) {
-        res.status(500).json({msg: 'Error to upload image to the cloud'})
+        res.status(500).json({msg: 'Error to get image'})
     }
+
 }
 
-// const deleteImageCloundinary = async(req = request, res = response) => {
-//     try {
+const updateImage = async (req = request, res = response) => {
+    const {id} = req.params
+
+    try {
         
-//     } catch (error) {
+        const imagePath = path.join(__dirname, '../uploads', id)
+    
+        if(fs.existsSync(imagePath)) {
+            fs.unlinkSync(imagePath)
+        }
+
+        const newImage = await uploadFile(req.files)
         
-//     }
-// }
+        res.status(201).json({newImage})
+
+
+    } catch (error) {
+        res.status(500).json({msg: 'Error to get image'})
+    }
+
+}
+
 
 export {
-    uploadImageCloundinary
+    uploadImage,
+    getImage,
+    updateImage
 }

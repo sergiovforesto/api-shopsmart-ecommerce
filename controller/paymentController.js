@@ -3,7 +3,7 @@ import Payment from "../models/paymentsModel.js";
 
 const createPayment = async(req = request, res = response) => {
     const {fullName, exp, cvv, cardNumber} = req.body
-    //TODO Revisar
+    
     const {user} = req
     
     const existPaymentMethod = await Payment.findOne({where: {userId: user.userId}})
@@ -34,22 +34,24 @@ const createPayment = async(req = request, res = response) => {
 }
 
 const getPayment = async(req = request, res = response) => {
-    //TODO Revisar
+    
     const {user} = req
 
-    const paymentMethod = await Payment.findByPk(user.userId)
+    const paymentMethod = await Payment.findOne({where: {userId: user.userId}})
 
     if(!paymentMethod) {
         const error = new Error('This user doesnt have Payment Method')
         return res.status(404).json({msg: error.message})
     }
 
-    res.status(200).json({paymentMethod})
+    const {exp, fullName} = paymentMethod
+
+    res.status(200).json({fullName, exp})
 }
 
 const updatePayment = async(req = request, res = response) => {
     const {fullName, exp, cvv, cardNumber} = req.body
-    //TODO Revisar
+    
     const {user} = req
 
     const paymentMethod = await Payment.findOne({where: {userId: user.userId} })
@@ -82,10 +84,10 @@ const updatePayment = async(req = request, res = response) => {
 }
 
 const deletePayment = async(req = request, res = response) => {
-    //TODO Revisar
+    
     const {user} = req
 
-    const existMethod = await Payment.findByPk(user.userId)
+    const existMethod = await Payment.findOne({where: {userId: user.userId} })
 
     if(!existMethod) {
         const err  = new Error(`This ID:${id} does not exist`)

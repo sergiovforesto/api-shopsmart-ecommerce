@@ -187,7 +187,7 @@ const userInfo = async (req = request, res = response) => {
         res.status(200).json({userInfo: id, name, lastName, role})
 
     } catch (error) {
-        const err = new Error('Error to get user by id')
+        const err = new Error('Error to get user')
         res.status(500).json({msg: err.message})
     }
 }
@@ -202,6 +202,24 @@ const adminProfile = (req = request, res = response) => {
     return res.status(200).json({user})
 }
 
+const getAllUsers = async(req = request, res = response) => {
+
+    try {
+        const users = await User.findAll({attributes: ['id', 'name', 'lastName', 'email']})
+        const usersNumbers = await User.count()
+        if(users.length === 0) {
+            const error = new Error('There are no users')
+            return res.status(400).json({msg: error.message})
+        }
+    
+        res.status(200).json({quantityUsers: usersNumbers, users})
+    } catch (error) {
+        const err = new Error('Error to get all users')
+        res.status(500).json({msg: err.message})
+    }
+
+}
+
 
 export {
     registerUser,
@@ -212,5 +230,6 @@ export {
     newPasswordUser,
     userInfo,
     profile,
-    adminProfile
+    adminProfile,
+    getAllUsers
 }

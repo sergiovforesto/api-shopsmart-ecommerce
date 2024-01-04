@@ -6,7 +6,7 @@ import {
     loginUser,               forgotPasswordUser, 
     forgotPasswordTokenUser, newPasswordUser,
     profile,                 userInfo,
-    adminProfile 
+    adminProfile,            getAllUsers
 } from "../controller/userController.js"
 
 import { isEmptyFields,   isEmailExist,} from "../middlewares/validateFields.js"
@@ -38,6 +38,11 @@ router.get('/admin', [
     authetication,
     isAdmin
 ], adminProfile)
+
+router.get('/', [
+    authetication,
+    isAdmin
+], getAllUsers)
 
 
 export default router
