@@ -3,9 +3,907 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Error 404</title>
+    <title>Api SmartShop -Ecommerce</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    <h1>NO FOUND 404</h1>
+<body class="bg-slate-100 flex justify-center items-center">
+    <main class="bg-white border h-full w-[90%] sm:w-[80%] xl:w-[70%]">
+        <section class="py-10 px-5">
+            <header class="flex flex-col gap-2 justify-center items-center mb-7">
+                <img src="./imgs/smart-logo.svg" alt="logo">
+
+                <p class="text-slate-500 font-bold">API - ShopSmart</p>
+            </header>
+
+            
+            <!--Users -->
+            <div>
+                <h2 class="text-gray-800 font-bold text-lg mb-3">Users</h2>
+
+                <hr class="mb-3 mt-3">
+
+                <div class="flex items-center text-gray-800 px-5 font-bold mb-2">
+                    <p>API</p>
+                </div>
+
+                <!--Create User -->
+                <div class="flex flex-col md:flex-row justify-between px-5 gap-2 md:gap-0 ">
+                    <div class="flex gap-2 items-center xl:w-[40%]">
+                        <p class="text-amber-300 font-bold">Post</p>
+                        <p class="text-gray-800">/users</p>
+                    </div>
+
+                    <div class="text-green-400 text-sm xl:w-[60%]">
+                    
+                        <code class="flex flex flex-col md:flex-row justify-center">
+                            {   
+                                <div class="ml-5 flex flex-col md:flex-row">
+
+                                    <p>"name": "value"</p>
+                                    <p>"lastName": "value"</p>
+                                    <p>"email": "value"</p>
+                                    <p>"password": "value"</p>
+                                </div>
+                            }
+                        </code>
+                    </div>
+                </div>
+
+                <!--confirm User -->
+                <div class="flex flex-col md:flex-row justify-between px-5 gap-2 md:gap-0 mt-4">
+                    <div class="flex gap-2 items-center">
+                        <p class="text-emerald-400 font-bold">Get</p>
+                        <p class="text-gray-800">/users/confirm/{token}</p>
+                    </div>
+
+                    <div class="text-gray-500">
+                    
+                        <div class="text-center sm:text-start">
+                            <p>confirm user</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!--Login User -->
+                <div class="flex flex-col md:flex-row justify-between px-5 gap-2 md:gap-0 mt-4">
+                    <div class="flex gap-2 items-center">
+                        <p class="text-amber-300 font-bold">Post</p>
+                        <p class="text-gray-800">/users/login</p>
+                    </div>
+
+                    <div class="text-green-400 text-sm">
+                    
+                        <code class="flex flex flex-col md:flex-row justify-center">
+                            {   
+                                <div class="ml-5 flex flex-col md:flex-row">
+
+                                    <p>"email": "value"</p>
+                                    <p>"password": "value"</p>
+                                </div>
+                            }
+                        </code>
+                    </div>
+                </div>
+
+                <!--forgot password User -->
+                <div class="flex flex-col md:flex-row justify-between px-5 gap-2 md:gap-0 mt-4">
+                    <div class="flex gap-2 items-center">
+                        <p class="text-amber-300 font-bold">Post</p>
+                        <p class="text-gray-800">/users/forgot-password</p>
+                    </div>
+
+                    <div class="text-green-400 text-sm">
+                    
+                        <code class="flex flex flex-col md:flex-row justify-center">
+                            {   
+                                <div class="ml-5 flex flex-col md:flex-row">
+
+                                    <p>"email": "value"</p>
+                                </div>
+                            }
+                        </code>
+                    </div>
+                </div>
+
+
+                <!--forgot-password - confirm User -->
+                <div class="flex flex-col md:flex-row justify-between px-5 gap-2 md:gap-0 mt-4">
+                    <div class="flex gap-2 items-center">
+                        <p class="text-emerald-400 font-bold">Get</p>
+                        <p class="text-gray-800">/users/forgot-password/{token}</p>
+                    </div>
+
+                    <div class="text-gray-500">
+                    
+                        <div class="text-center sm:text-start">
+                            <p>confirm user by token</p>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!--New Password -->
+                <div class="flex flex-col md:flex-row justify-between px-5 gap-2 md:gap-0 mt-4">
+                    <div class="flex gap-2 items-center">
+                        <p class="text-amber-300 font-bold">Post</p>
+                        <p class="text-gray-800">/users/forgot-password/{token}</p>
+                    </div>
+    
+                    <div class="text-green-400 text-sm">
+                    
+                        <code class="flex flex flex-col md:flex-row justify-center">
+                            {   
+                                <div class="ml-5 flex flex-col md:flex-row">
+    
+                                    <p>"password": "new password" </p>
+                                </div>
+                            }
+                        </code>
+                    </div>
+                </div>
+
+                <!--Enter the profile -->
+                <div class="flex flex-col md:flex-row justify-between px-5 gap-2 md:gap-0 mt-4">
+                    <div class="flex gap-2 items-center">
+                        <p class="text-emerald-400 font-bold">Get</p>
+                        <p class="text-gray-800">/users/profile</p>
+                    </div>
+
+                    <div class="text-gray-500">
+                    
+                        <div class="text-center sm:text-start">
+                            <p>Enter the profile</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!--Profile Admin -->
+                <div class="flex flex-col md:flex-row justify-between px-5 gap-2 md:gap-0 mt-4">
+                    <div class="flex gap-2 items-center">
+                        <p class="text-emerald-400 font-bold">Get</p>
+                        <p class="text-gray-800">/users/admin</p>
+                    </div>
+
+                    <div class="text-gray-500">
+                    
+                        <div class="text-center sm:text-start">
+                            <p>Only Access to Admin User</p>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!--Get all users (admin)-->
+                <div class="flex flex-col md:flex-row justify-between px-5 gap-2 md:gap-0 mt-4">
+                    <div class="flex gap-2 items-center">
+                        <p class="text-emerald-400 font-bold">Get</p>
+                        <p class="text-gray-800">/users</p>
+                    </div>
+
+                    <div class="text-gray-500">
+                    
+                        <div class="text-center sm:text-start">
+                            <p>Get all users (admin)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--Shipment Information -->
+
+            <div class="mt-4">
+                <h2 class="text-gray-800 font-bold text-lg mb-3">Shipment Information</h2>
+
+                <hr class="mb-3 mt-3">
+
+                <div class="flex items-center text-gray-800 px-5 font-bold mb-2">
+                    <p>API</p>
+                </div>
+
+                <!--Create Shipment Information -->
+                <div class="flex flex-col md:flex-row justify-between px-5 gap-2 md:gap-0 ">
+                    <div class="flex gap-2 items-center xl:w-[40%]">
+                        <p class="text-amber-300 font-bold">Post</p>
+                        <p class="text-gray-800">/shipping-info</p>
+                    </div>
+
+                    <div class="text-green-400 text-[11px] xl:w-[60%]">
+                    
+                        <code class="flex flex flex-col md:flex-row justify-center">
+                            {   
+                                <div class="ml-5 flex flex-col md:flex-row">
+
+                                    <p>"country": "value",</p>
+                                    <p>"city": "value",</p>
+                                    <p>"state": "value",</p>
+                                    <p>"address": "value",</p>
+                                    <p>"phone": "value",</p>
+                                    <p>"zipCode": "value",</p>
+                                </div>
+                            }
+                        </code>
+                    </div>
+                </div>
+
+
+                <!--Get All Shipping-Info (admin)-->
+                <div class="flex flex-col md:flex-row justify-between px-5 gap-2 md:gap-0 mt-4">
+                    <div class="flex gap-2 items-center">
+                        <p class="text-emerald-400 font-bold">Get</p>
+                        <p class="text-gray-800">/shipping-info</p>
+                    </div>
+
+                    <div class="text-gray-500">
+                    
+                        <div class="text-center sm:text-start">
+                            <p>Get All Shipment Information (admin)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!--Get Shipping-Info- User by Id-->
+                <div class="flex flex-col md:flex-row justify-between px-5 gap-2 md:gap-0 mt-4">
+                    <div class="flex gap-2 items-center">
+                        <p class="text-emerald-400 font-bold">Get</p>
+                        <p class="text-gray-800">/shipping-info/information</p>
+                    </div>
+
+                    <div class="text-gray-500">
+                    
+                        <div class="text-center sm:text-start">
+                            <p>Get req.user.userId</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!--Update Shipment Information -->
+                <div class="flex flex-col md:flex-row justify-between px-5 gap-2 md:gap-0 mt-4">
+                    <div class="flex gap-2 items-center xl:w-[40%]">
+                        <p class="text-indigo-600 font-bold">Put</p>
+                        <p class="text-gray-800">/shipping-info</p>
+                    </div>
+
+                    <div class="text-green-400 text-[11px] xl:w-[60%]">
+                    
+                        <code class="flex flex flex-col md:flex-row justify-center">
+                            {   
+                                <div class="ml-5 flex flex-col md:flex-row">
+
+                                    <p>"country": "value",</p>
+                                    <p>"city": "value",</p>
+                                    <p>"state": "value",</p>
+                                    <p>"address": "value",</p>
+                                    <p>"phone": "value",</p>
+                                    <p>"zipCode": "value",</p>
+                                </div>
+                            }
+                        </code>
+                    </div>
+                </div>
+
+                <!--Delete Shipment Information -->
+                <div class="flex flex-col md:flex-row justify-between px-5 gap-2 md:gap-0 mt-4">
+                    <div class="flex gap-2 items-center">
+                        <p class="text-rose-600 font-bold">Delete</p>
+                        <p class="text-gray-800">/shipping-info</p>
+                    </div>
+
+                    <div class="text-gray-500">
+                    
+                        <div class="text-center sm:text-start">
+                            <p>Delete Shipment Information by req.user.userId</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!--Products -->
+            <div class="mt-4">
+                <h2 class="text-gray-800 font-bold text-lg mb-3">Products</h2>
+
+                <hr class="mb-3 mt-3">
+
+                <div class="flex items-center text-gray-800 px-5 font-bold mb-2">
+                    <p>API</p>
+                </div>
+
+                <!--Create Products -->
+                <div class="flex flex-col md:flex-row justify-between px-5 gap-2 md:gap-0 ">
+                    <div class="flex gap-2 items-center xl:w-[40%]">
+                        <p class="text-amber-300 font-bold">Post</p>
+                        <p class="text-gray-800">/products</p>
+                    </div>
+
+                    <div class="text-green-400 text-[11px] xl:w-[60%]">
+                    
+                        <code class="flex flex flex-col md:flex-row justify-center">
+                            {   
+                                <div class="ml-5 flex flex-col md:flex-row">
+
+                                    <p>"title": "value",</p>
+                                    <p>"description": "value",</p>
+                                    <p>"price": "value",</p>
+                                    <p>"color": "value",</p>
+                                    <p>"stock": "value",</p>
+                                    <p>"discount": "value",</p>
+                                    <p>"collectionId": "value",</p>
+                                </div>
+                            }
+                        </code>
+                    </div>
+                </div>
+
+                <!--Add Collection to Product -->
+                <div class="flex flex-col md:flex-row justify-between px-5 gap-2 md:gap-0 mt-4">
+                    <div class="flex gap-2 items-center">
+                        <p class="text-indigo-600 font-bold">Put</p>
+                        <p class="text-gray-800">/products/add-collection/{id}</p>
+                    </div>
+
+                    <div class="text-green-400 text-[11px]">
+                    
+                        <code class="flex flex flex-col md:flex-row justify-center">
+                            {   
+                                <div class="ml-5 flex flex-col md:flex-row">
+                                    <p>"collectionId": "value",</p>
+                                </div>
+                            }
+                        </code>
+                    </div>
+                </div>
+
+
+                <!--Get all products-->
+                <div class="flex flex-col md:flex-row justify-between px-5 gap-2 md:gap-0 mt-4">
+                    <div class="flex gap-2 items-center">
+                        <p class="text-emerald-400 font-bold">Get</p>
+                        <p class="text-gray-800">/products</p>
+                    </div>
+
+                    <div class="text-gray-500">
+                    
+                        <div class="text-center sm:text-start">
+                            <p>Get all products</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!--Get product by id-->
+                <div class="flex flex-col md:flex-row justify-between px-5 gap-2 md:gap-0 mt-4">
+                    <div class="flex gap-2 items-center">
+                        <p class="text-emerald-400 font-bold">Get</p>
+                        <p class="text-gray-800">/products/{id}</p>
+                    </div>
+
+                    <div class="text-gray-500">
+                    
+                        <div class="text-center sm:text-start">
+                            <p>Get products by Id</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!--Update Product -->
+                <div class="flex flex-col md:flex-row justify-between px-5 gap-2 md:gap-0 mt-4">
+                    <div class="flex gap-2 items-center xl:w-[40%]">
+                        <p class="text-indigo-600 font-bold">Put</p>
+                        <p class="text-gray-800">/products/{id}</p>
+                    </div>
+
+                    <div class="text-green-400 text-[11px] xl:w-[60%]">
+                    
+                        <code class="flex flex flex-col md:flex-row justify-center">
+                            {   
+                                <div class="ml-5 flex flex-col md:flex-row">
+
+                                    <p>"title": "value",</p>
+                                    <p>"description": "value",</p>
+                                    <p>"price": "value",</p>
+                                    <p>"color": "value",</p>
+                                    <p>"stock": "value",</p>
+                                    <p>"discount": "value",</p>
+                                    <p>"collectionId": "value",</p>
+                                </div>
+                            }
+                        </code>
+                    </div>
+                </div>
+
+                <!--Delete product by Id -->
+                <div class="flex flex-col md:flex-row justify-between px-5 gap-2 md:gap-0 mt-4">
+                    <div class="flex gap-2 items-center">
+                        <p class="text-rose-600 font-bold">Delete</p>
+                        <p class="text-gray-800">/products/{id}</p>
+                    </div>
+
+                    <div class="text-gray-500">
+                    
+                        <div class="text-center sm:text-start">
+                            <p>Delete product by Id</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+
+            <!--Products Features -->
+            <div class="mt-4">
+                <h2 class="text-gray-800 font-bold text-lg mb-3">Products Features</h2>
+
+                <hr class="mb-3 mt-3">
+
+                <div class="flex items-center text-gray-800 px-5 font-bold mb-2">
+                    <p>API</p>
+                </div>
+
+                <!--Create Product Feature-->
+                <div class="flex flex-col justify-between px-5 gap-2">
+                    <div class="flex gap-2 items-center ">
+                        <p class="text-amber-300 font-bold">Post</p>
+                        <p class="text-gray-800">/features/create/{productId}</p>
+                    </div>
+
+                    <div class="text-green-400 text-[11px] ">
+                    
+                        <code class="flex flex flex-col">
+                            {   
+                                <div class="ml-5 flex flex-col">
+
+                                    <p>"first": "value",</p>
+                                    <p>"firstValue": "value",</p>
+                                    <p>"second": "value",</p>
+                                    <p>"secondValue": "value",</p>
+                                    <p>"third": "value",</p>
+                                    <p>"thirdValue": "value",</p>
+                                    <p>"fourth": "value",</p>
+                                    <p>"fourthValue": "value",</p>
+                                    <p>"fifth": "value",</p>
+                                    <p>"fifthValue": "value",</p>
+                                </div>
+                            }
+                        </code>
+                    </div>
+                </div>
+
+                <!--Get Feature by Id -->
+                <div class="flex flex-col md:flex-row justify-between px-5 gap-2 md:gap-0 mt-4">
+                    <div class="flex gap-2 items-center">
+                        <p class="text-emerald-400 font-bold">Get</p>
+                        <p class="text-gray-800">/features/{id}</p>
+                    </div>
+
+                    <div class="text-gray-500">
+                    
+                        <div class="text-center sm:text-start">
+                            <p>Get Feature by Id </p>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!--Update Feature by Id-->
+                <div class="flex flex-col justify-between px-5 gap-2 mt-4">
+                    <div class="flex gap-2 items-center">
+                        <p class="text-indigo-600 font-bold">Put</p>
+                        <p class="text-gray-800">/features/update/{id}</p>
+                    </div>
+
+                    <div class="text-green-400 text-[11px] ">
+                    
+                        <code class="flex flex flex-col">
+                            {   
+                                <div class="ml-5 flex flex-col">
+
+                                    <p>"first": "value",</p>
+                                    <p>"firstValue": "value",</p>
+                                    <p>"second": "value",</p>
+                                    <p>"secondValue": "value",</p>
+                                    <p>"third": "value",</p>
+                                    <p>"thirdValue": "value",</p>
+                                    <p>"fourth": "value",</p>
+                                    <p>"fourthValue": "value",</p>
+                                    <p>"fifth": "value",</p>
+                                    <p>"fifthValue": "value",</p>
+                                </div>
+                            }
+                        </code>
+                    </div>
+                </div>
+
+                <!--Delete Feature by Id-->
+                <div class="flex flex-col md:flex-row justify-between px-5 gap-2 md:gap-0 mt-4">
+                    <div class="flex gap-2 items-center">
+                        <p class="text-rose-600 font-bold">Delete</p>
+                        <p class="text-gray-800">/features/delete/{id}</p>
+                    </div>
+
+                    <div class="text-gray-500">
+                    
+                        <div class="text-center sm:text-start">
+                            <p>Delete Feature by Id</p>
+                        </div>
+                    </div>
+                </div>
+
+                
+            </div>
+
+
+            <!--Collections-->
+            <div class="mt-4">
+                <h2 class="text-gray-800 font-bold text-lg mb-3">Collections</h2>
+
+                <hr class="mb-3 mt-3">
+
+                <div class="flex items-center text-gray-800 px-5 font-bold mb-2">
+                    <p>API</p>
+                </div>
+
+                <!--Create Product Feature-->
+                <div class="flex flex-col md:flex-row justify-between px-5 gap-2">
+                    <div class="flex gap-2 items-center ">
+                        <p class="text-amber-300 font-bold">Post</p>
+                        <p class="text-gray-800">/collections</p>
+                    </div>
+
+                    <div class="text-green-400 text-[11px] ">
+                    
+                        <code class="flex flex flex-col md:flex-row">
+                            {   
+                                <div class="ml-5 flex flex-col md:flex-row">
+
+                                    <p>"title": "value",</p>
+                                    <p>"description": "value",</p>
+                                   
+                                </div>
+                            }
+                        </code>
+                    </div>
+                </div>
+
+                <!--Get all Collections -->
+                <div class="flex flex-col md:flex-row justify-between px-5 gap-2 md:gap-0 mt-4">
+                    <div class="flex gap-2 items-center">
+                        <p class="text-emerald-400 font-bold">Get</p>
+                        <p class="text-gray-800">/collections</p>
+                    </div>
+
+                    <div class="text-gray-500">
+                    
+                        <div class="text-center sm:text-start">
+                            <p>Get all Collections</p>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!--Get Collection by Id-->
+                <div class="flex flex-col md:flex-row justify-between px-5 gap-2 md:gap-0 mt-4">
+                    <div class="flex gap-2 items-center">
+                        <p class="text-emerald-400 font-bold">Get</p>
+                        <p class="text-gray-800">/collections/{id}</p>
+                    </div>
+
+                    <div class="text-gray-500">
+                    
+                        <div class="text-center sm:text-start">
+                            <p>Get Collection by Id</p>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!--Get Collection by Id-->
+                <div class="flex flex-col md:flex-row justify-between px-5 gap-2 mt-4">
+                    <div class="flex gap-2 items-center">
+                        <p class="text-indigo-600 font-bold">Put</p>
+                        <p class="text-gray-800">/collections/{id}</p>
+                    </div>
+
+                    <div class="text-green-400 text-[11px] ">
+                    
+                        <code class="flex flex flex-col md:flex-row">
+                            {   
+                                <div class="ml-5 flex flex-col md:flex-row">
+
+                                    <p>"title": "value",</p>
+                                    <p>"description": "value",</p>
+                                   
+                                </div>
+                            }
+                        </code>
+                    </div>
+                </div>
+
+                <!--Delete Collection-->
+                <div class="flex flex-col md:flex-row justify-between px-5 gap-2 md:gap-0 mt-4">
+                    <div class="flex gap-2 items-center">
+                        <p class="text-rose-600 font-bold">Delete</p>
+                        <p class="text-gray-800">/collections/{id}</p>
+                    </div>
+
+                    <div class="text-gray-500">
+                    
+                        <div class="text-center sm:text-start">
+                            <p>Delete Collection</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+
+            <!--Create Payment Method-->
+            <div class="mt-4">
+                <h2 class="text-gray-800 font-bold text-lg mb-3">payments</h2>
+
+                <hr class="mb-3 mt-3">
+
+                <div class="flex items-center text-gray-800 px-5 font-bold mb-2">
+                    <p>API</p>
+                </div>
+
+                <!--Create Product Feature-->
+                <div class="flex flex-col md:flex-row justify-between px-5 gap-2">
+                    <div class="flex gap-2 items-center ">
+                        <p class="text-amber-300 font-bold">Post</p>
+                        <p class="text-gray-800">/payments</p>
+                    </div>
+
+                    <div class="text-green-400 text-[11px] ">
+                    
+                        <code class="flex flex flex-col md:flex-row">
+                            {   
+                                <div class="ml-5 flex flex-col md:flex-row">
+
+                                    <p>"fullName": "value",</p>
+                                    <p>"exp": "value",</p>
+                                    <p>"cvv": "value",</p>
+                                    <p>"cardNumber": "value",</p>
+                                   
+                                </div>
+                            }
+                        </code>
+                    </div>
+                </div>
+
+                <!--Get payment method -->
+                <div class="flex flex-col md:flex-row justify-between px-5 gap-2 md:gap-0 mt-4">
+                    <div class="flex gap-2 items-center">
+                        <p class="text-emerald-400 font-bold">Get</p>
+                        <p class="text-gray-800">/payments</p>
+                    </div>
+
+                    <div class="text-gray-500">
+                    
+                        <div class="text-center sm:text-start">
+                            <p>Get payment method </p>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!--Update Payment Method-->
+                <div class="flex flex-col md:flex-row justify-between px-5 gap-2 mt-4">
+                    <div class="flex gap-2 items-center">
+                        <p class="text-indigo-600 font-bold">Put</p>
+                        <p class="text-gray-800">/payments</p>
+                    </div>
+
+                    <div class="text-green-400 text-[11px] ">
+                    
+                        <code class="flex flex flex-col md:flex-row">
+                            {   
+                                <div class="ml-5 flex flex-col md:flex-row">
+
+                                    <p>"fullName": "value",</p>
+                                    <p>"exp": "value",</p>
+                                    <p>"cvv": "value",</p>
+                                    <p>"cardNumber": "value",</p>
+                                   
+                                </div>
+                            }
+                        </code>
+                    </div>
+                </div>
+
+                <!--Delete payments-->
+                <div class="flex flex-col md:flex-row justify-between px-5 gap-2 md:gap-0 mt-4">
+                    <div class="flex gap-2 items-center">
+                        <p class="text-rose-600 font-bold">Delete</p>
+                        <p class="text-gray-800">/payments</p>
+                    </div>
+
+                    <div class="text-gray-500">
+                    
+                        <div class="text-center sm:text-start">
+                            <p>Delete payments</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!--Upload Image-->
+            <div class="mt-4">
+                <h2 class="text-gray-800 font-bold text-lg mb-3">uploads</h2>
+
+                <hr class="mb-3 mt-3">
+
+                <div class="flex items-center text-gray-800 px-5 font-bold mb-2">
+                    <p>API</p>
+                </div>
+
+                <!--Create Product Feature-->
+                <div class="flex flex-col md:flex-row justify-between px-5 gap-2">
+                    <div class="flex gap-2 items-center ">
+                        <p class="text-amber-300 font-bold">Post</p>
+                        <p class="text-gray-800">/uploads</p>
+                    </div>
+
+                    <div class="text-green-400 text-[11px] ">
+                    
+                        <code class="flex flex flex-col md:flex-row">
+                            {   
+                                <div class="ml-5 flex flex-col md:flex-row">
+
+                                    Body: Form-Data
+                                   
+                                </div>
+                            }
+                        </code>
+                    </div>
+                </div>
+
+                <!--Get image by Id -->
+                <div class="flex flex-col md:flex-row justify-between px-5 gap-2 md:gap-0 mt-4">
+                    <div class="flex gap-2 items-center">
+                        <p class="text-emerald-400 font-bold">Get</p>
+                        <p class="text-gray-800">/uploads/{id}</p>
+                    </div>
+
+                    <div class="text-gray-500">
+                    
+                        <div class="text-center sm:text-start">
+                            <p>Get image by Id</p>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!--Update Image by Id-->
+                <div class="flex flex-col md:flex-row justify-between px-5 gap-2 mt-4">
+                    <div class="flex gap-2 items-center">
+                        <p class="text-indigo-600 font-bold">Put</p>
+                        <p class="text-gray-800">/uploads/{id}</p>
+                    </div>
+
+                    <div class="text-gray-500">
+                    
+                        <div class="text-center sm:text-start">
+                            <p>Body: Form-Data</p>
+                        </div>
+                    </div>
+                </div>
+
+        
+
+            </div>
+
+
+            <!--Create Order-->
+            <div class="mt-4">
+                <h2 class="text-gray-800 font-bold text-lg mb-3">orders</h2>
+
+                <hr class="mb-3 mt-3">
+
+                <div class="flex items-center text-gray-800 px-5 font-bold mb-2">
+                    <p>API</p>
+                </div>
+
+                <!--Create Product Feature-->
+                <div class="flex flex-col md:flex-row justify-between px-5 gap-2">
+                    <div class="flex gap-2 items-center ">
+                        <p class="text-amber-300 font-bold">Post</p>
+                        <p class="text-gray-800">/orders</p>
+                    </div>
+
+                    <div class="text-green-400 text-[11px] ">
+                    
+                        <code class="flex flex flex-col md:flex-row">
+                            {   
+                                <div class="ml-5 flex flex-col md:flex-row">
+
+                                    <p>"products": [{json}],</p>
+                                    <p>"subTotal": "value",</p>
+                                    <p>"total": "value",</p>
+                                   
+                                </div>
+                            }
+                        </code>
+                    </div>
+                </div>
+
+                <!--Get last order by user-->
+                <div class="flex flex-col md:flex-row justify-between px-5 gap-2 md:gap-0 mt-4">
+                    <div class="flex gap-2 items-center">
+                        <p class="text-emerald-400 font-bold">Get</p>
+                        <p class="text-gray-800">/orders</p>
+                    </div>
+
+                    <div class="text-gray-500">
+                    
+                        <div class="text-center sm:text-start">
+                            <p>Get last order by user </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!--Get all Order (admin)-->
+                <div class="flex flex-col md:flex-row justify-between px-5 gap-2 md:gap-0 mt-4">
+                    <div class="flex gap-2 items-center">
+                        <p class="text-emerald-400 font-bold">Get</p>
+                        <p class="text-gray-800">/orders/admin</p>
+                    </div>
+
+                    <div class="text-gray-500">
+                    
+                        <div class="text-center sm:text-start">
+                            <p>Get all Order (admin) </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!--Get order by Order-number (admin)-->
+                <div class="flex flex-col md:flex-row justify-between px-5 gap-2 md:gap-0 mt-4">
+                    <div class="flex gap-2 items-center">
+                        <p class="text-emerald-400 font-bold">Get</p>
+                        <p class="text-gray-800">/orders/admin/{orderNumber}</p>
+                    </div>
+
+                    <div class="text-gray-500">
+                    
+                        <div class="text-center sm:text-start">
+                            <p>Get order by Order-number (admin)</p>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!--Update delivery date-->
+                <div class="flex flex-col md:flex-row justify-between px-5 gap-2 mt-4">
+                    <div class="flex gap-2 items-center">
+                        <p class="text-indigo-600 font-bold">Put</p>
+                        <p class="text-gray-800">/orders/admin/update/{orderNumber}</p>
+                    </div>
+
+                    <div class="text-green-400 text-[11px] ">
+                    
+                        <code class="flex flex flex-col md:flex-row">
+                            {   
+                                <div class="ml-5 flex flex-col md:flex-row">
+
+                                    <p>"status": "value",</p>
+                                    <p>"dateDelivery": "value",</p>
+                                </div>
+                            }
+                        </code>
+                    </div>
+                </div>
+
+                
+
+            </div>
+
+
+
+        </section>
+    </main>
+    
 </body>
 </html>
