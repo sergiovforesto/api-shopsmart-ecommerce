@@ -23,10 +23,16 @@ ShopSmart - Ecommerce it's built with:
 + nodemailer, to handle emails
 + sequelize ORM
 
+## Download previous data from the database
++ Copy the data to shopsmart.sql
+
+
 
 ## Getting Started
-```bash
-  hola
 
+
+```bash
+  npm install & npm run dev
+  go to: http://localhost:5000/
 ```
 
