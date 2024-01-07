@@ -23,6 +23,12 @@ ShopSmart - Ecommerce it's built with:
 + nodemailer, to handle emails
 + sequelize ORM
 
+## Firts Steps
+1. Change values in the **.env** file with your data
+2. Go to mailtrap.io and create an account to get your credentials
+3. Then, put the values in the **.env** file
+![Screenshot 2024-01-04 051252](https://github.com/sergiovforesto/Frontend-SmartShop/assets/107615935/0f366e9a-6f41-43d8-8f39-ee3ff67783de)
+
 ## Download previous data from the database
 + Copy the data to shopsmart.sql
 
@@ -33,6 +39,6 @@ ShopSmart - Ecommerce it's built with:
 
 ```bash
   npm install & npm run dev
-  go to: http://localhost:5000/
 ```
++ go to: [http://localhost:5000](http://localhost:5000)
 
