@@ -1,7 +1,7 @@
 import express from "express"
 const router = express.Router()
 
-import { createOrder, getOrderUser, getAllOrders, getOrderNumber, updateDelivery } from "../controller/orderController.js"
+import { createOrder, getOrderUser, getAllOrders, getOrderNumber, updateDelivery, getMyOrders, getMyOrder } from "../controller/orderController.js"
 import { authetication } from "../middlewares/authetication.js"
 import { isEmptyFields } from "../middlewares/validateFields.js"
 import { isAdmin } from "../middlewares/isAdmin.js"
@@ -15,6 +15,14 @@ router.route('/').post([
 router.route('/').get([
     authetication,
 ], getOrderUser)
+
+router.route('/my-orders').get([
+    authetication,
+], getMyOrders)
+
+router.route('/my-orders/:orderNumber').get([
+    authetication,
+], getMyOrder)
 
 router.route('/admin').get([
     authetication,

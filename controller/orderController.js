@@ -50,7 +50,53 @@ const getOrderUser = async(req = request, res = response) => {
         ]
     })
 
+    if(!lastOrder) {
+        const error = new Error("You haven't orders")
+        return res.status(404).json({msg: error.message})
+    }
+
     res.status(200).json({lastOrder})
+    
+}
+
+const getMyOrders = async(req = request, res = response) => {
+    const {userId} = req.user
+
+    const page = Number(req.query.page) || 1;
+    const limit = Number(req.query.limit) || 12;
+
+    const orders = await Order.findAll({
+        attributes: ['orderNumber', 'dateOrder', 'dateDelivery', 'status', 'total'],
+        where: {userId: userId},
+        offset: (page - 1) * limit,
+        limit: limit,
+    })
+
+    if(!orders) {
+        const error = new Error("You haven't orders")
+        return res.status(404).json({msg: error.message})
+    }
+
+    const quantity = await Order.count({where: {userId: userId}})
+
+
+    res.status(200).json({quantityOrders: quantity, orders})
+    
+}
+
+const getMyOrder = async(req = request, res = response) => {
+    const {orderNumber} = req.params
+    
+    const order = await Order.findOne({
+        where: {orderNumber: orderNumber}
+    })
+
+    if(!order) {
+        const error = new Error("This Order Don't exist")
+        return res.status(404).json({msg: error.message})
+    }
+
+    res.status(200).json({order})
     
 }
 
@@ -62,6 +108,11 @@ const getAllOrders = async(req = request, res = response) => {
         offset: (page - 1) * limit,
         limit: limit,
     })
+
+    if(!orders) {
+        const error = new Error("You haven't orders")
+        return res.status(404).json({msg: error.message})
+    }
 
     const orderNumber = await Order.count()
 
@@ -108,6 +159,7 @@ const updateDelivery = async(req = request, res = response) => {
     }
 
     const updateOrder = order.toJSON();
+    
 
     try {
         order.status = status || updateOrder.status,
@@ -129,5 +181,7 @@ export {
     getOrderUser,
     getAllOrders,
     getOrderNumber,
-    updateDelivery
+    updateDelivery,
+    getMyOrders,
+    getMyOrder
 }
