@@ -197,6 +197,31 @@ const deleteProduct = async(req = request, res = response) => {
 }
 
 
+const searchProduct = async(req = request, res = response) => {
+    const productName = req.query.productName
+
+    if (!productName || !productName.trim()) {
+        return res.status(400).json({msg: 'Please enter a value'})
+    }
+    
+
+    const product = await Product.findAll({
+        attributes: { exclude: ['description', 'collectionId'] },
+        where: {
+            title: {
+              [Op.startsWith]: `${productName}%`
+            }
+        }
+    })
+
+    if(!product || product.length === 0) {
+        const err  = new Error("Don't Exist")
+        return res.status(404).json({msg: err.message})
+    }
+    res.status(200).json({product})
+}
+
+
 
 
 export {
@@ -205,5 +230,6 @@ export {
     createProduct,
     addCollectionToProduct,
     updateProduct,
-    deleteProduct
+    deleteProduct,
+    searchProduct
 }

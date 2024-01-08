@@ -1,13 +1,14 @@
 import express from "express"
 const router = express.Router()
 
-import { getProduct, getAllProductStatic, createProduct, addCollectionToProduct, updateProduct, deleteProduct} from "../controller/productController.js"
+import { getProduct, getAllProductStatic, createProduct, addCollectionToProduct, updateProduct, deleteProduct, searchProduct} from "../controller/productController.js"
 import { isEmptyFields } from "../middlewares/validateFields.js"
 import { isAdmin } from "../middlewares/isAdmin.js"
 import { authetication } from "../middlewares/authetication.js"
 
 //public
 router.route('/').get(getAllProductStatic)
+router.route('/search').get(searchProduct)
 
 router.route('/:id').get(getProduct)
 
