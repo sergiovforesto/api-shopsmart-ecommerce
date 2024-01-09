@@ -32,7 +32,10 @@ ShopSmart - Ecommerce it's built with:
 ## Download previous data from the database
 + Copy the data to shopsmart.sql
 
-
+## Users 
++ admin: sergiovforesto@gmail.com
++ customer: pedro@gmail.com
++ customer: mikey@gmail.com
 
 ## Getting Started
 
