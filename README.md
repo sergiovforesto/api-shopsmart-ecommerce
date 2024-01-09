@@ -33,9 +33,10 @@ ShopSmart - Ecommerce it's built with:
 + Copy the data to shopsmart.sql
 
 ## Users 
-+ admin: sergiovforesto@gmail.com
++ admin: sergiovforesto@gmail.com 
 + customer: pedro@gmail.com
 + customer: mikey@gmail.com
++ passwords: 123456789
 
 ## Getting Started
 
